@@ -23,9 +23,11 @@ module.exports = () => {
         title: 'JATE'
       }),
       new WebpackPwaManifest({
-        
+        name: 'Just Another Text Editor',
+        short_name: 'JATE',
+        description: 'Have your text editor at your fingertips, no matter your location.'
       }),
-      
+
       new InjectManifest({
         swSRC: './src-sw.js',
         swDest: 'src-sw.js',
