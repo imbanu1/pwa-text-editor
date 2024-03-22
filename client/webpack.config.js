@@ -25,18 +25,42 @@ module.exports = () => {
       new WebpackPwaManifest({
         name: 'Just Another Text Editor',
         short_name: 'JATE',
-        description: 'Have your text editor at your fingertips, no matter your location.'
+        description: 'Have your text editor at your fingertips, no matter your location.',
+        background_color: '#84BAFF',
+        theme_color: '#84BAFF',
+        start_url: '/',
+        publicPath: '/',
+        icons: [
+          {
+          src: path.resolve('src/images/logo.png'),
+          sizes: [96, 128, 192, 256, 384, 512],
+          destination: path.join('assets', 'icons'),
+        },
+        ],
       }),
-
+    ],
       new InjectManifest({
-        swSRC: './src-sw.js',
+        swSrc: './src-sw.js',
         swDest: 'src-sw.js',
       }),
-      
-    ],
+  
 
     module: {
       rules: [
+        {
+          test: /\.css$/i,
+          use: ['style-loader', 'css-loader'],
+        },
+        {
+          test: /\.m?js$/,
+          exclude: /node_modules/,
+          use: {
+            loader: ['babel-loader'],
+            options: {
+              presets: ['@babel/preset-env']
+            }
+          }
+        }
         
       ],
     },
