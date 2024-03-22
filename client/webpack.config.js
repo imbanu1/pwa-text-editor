@@ -22,7 +22,15 @@ module.exports = () => {
         template: './index.html',
         title: 'JATE'
       }),
-      new 
+      new WebpackPwaManifest({
+        
+      }),
+      
+      new InjectManifest({
+        swSRC: './src-sw.js',
+        swDest: 'src-sw.js',
+      }),
+      
     ],
 
     module: {
